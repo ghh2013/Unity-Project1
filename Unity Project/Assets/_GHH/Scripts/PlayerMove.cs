@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
         //transform.Translate(dir * speed * Time.deltaTime);
 
         //P = P0 + vt;
-        //transform.position = transform.position = (dir* speed * Time.deltaTime);
+        //transform.position = transform.position = (dir * speed * Time.deltaTime);
         //transform.position += dir * speed * Time.deltaTime;
         MoveInScreen();
     }
