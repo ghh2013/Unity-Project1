@@ -26,6 +26,7 @@ public class PlayerFire : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletFactory);
 
+            //bullet.transform.position = transform.position;
             bullet.transform.position = firePoint.transform.position;
         }
     }
