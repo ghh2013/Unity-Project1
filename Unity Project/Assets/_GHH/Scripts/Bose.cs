@@ -37,16 +37,10 @@ public class Bose : MonoBehaviour
             curTime += Time.deltaTime;
             if (curTime > fireTime)
             {
-                
-                    GameObject bullet = Instantiate(bulletFactory);
-                    bullet.transform.position = transform.position;
-
-                    Vector3 dir = target.transform.position - transform.position;
-                    dir.Normalize();
-
-                    
-                    bullet.transform.up = dir;
-               
+                GameObject bullet = Instantiate(bulletFactory);
+                bullet.transform.position = transform.position;
+                Vector3 dir = target.transform.position - transform.position; dir.Normalize();
+                bullet.transform.up = dir;
                 curTime = 0.0f;
             }
         }
@@ -65,9 +59,8 @@ public class Bose : MonoBehaviour
                     GameObject bullet = Instantiate(bulletFactory);
                     bullet.transform.position = transform.position;
 
-                    
                     float angle = 360.0f / bulletMax;
-                    bullet.transform.up = ;
+                    bullet.transform.eulerAngles = new Vector3(0, 0, i * angle);
                 }
                 curTime1 = 0.0f;
             }
