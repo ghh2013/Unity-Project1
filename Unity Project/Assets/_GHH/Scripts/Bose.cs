@@ -23,11 +23,9 @@ public class Bose : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
         AutoFire1();
         AutoFire2();
-
     }
 
     private void AutoFire1()
@@ -44,7 +42,6 @@ public class Bose : MonoBehaviour
                 curTime = 0.0f;
             }
         }
-        
     }
 
     private void AutoFire2()
