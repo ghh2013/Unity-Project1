@@ -23,5 +23,7 @@ public class Enemy : MonoBehaviour
         //Destroy(gameObject, 1.0f); //1초후에 오브젝트 삭제
         Destroy(gameObject);
         Destroy(collision.gameObject);
+
+        ScoreManager.Instance.AddScore();
     }
 }

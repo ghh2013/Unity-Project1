@@ -11,7 +11,7 @@ public class PlayerFire : MonoBehaviour
     LineRenderer lr;
 
     public float rayTime = 0.3f;
-        float timer = 0.0f;
+    float timer = 0.0f;
 
     
 
@@ -25,7 +25,7 @@ public class PlayerFire : MonoBehaviour
     void Update()
     {
         //Fire();
-        FireRay();
+        //FireRay();
 
         if (lr.enabled) ShowRay();
     }
@@ -85,5 +85,12 @@ public class PlayerFire : MonoBehaviour
                 lr.SetPosition(1, transform.position + Vector3.up * 10);
             }
         }
+    }
+
+    public void OnFireButtonClick()
+    {
+        GameObject bullet = Instantiate(bulletFactory);
+        //bullet.transform.position = transform.position;
+        bullet.transform.position = firePoint.transform.position;
     }
 }

@@ -12,6 +12,7 @@ public class Background : MonoBehaviour
     void Start()
     {
         mat = GetComponent<MeshRenderer>().material;
+        //mat = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame

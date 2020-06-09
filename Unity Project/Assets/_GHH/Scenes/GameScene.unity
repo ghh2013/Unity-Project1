@@ -1990,8 +1990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edf95bc0b9f56f44b06acd4414879e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 0}
-  kill: 0
 --- !u!114 &1499535415
 MonoBehaviour:
   m_ObjectHideFlags: 0
