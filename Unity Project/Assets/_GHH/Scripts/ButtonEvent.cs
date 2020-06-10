@@ -6,18 +6,16 @@ public class ButtonEvent : MonoBehaviour
 {
     public void OnStartButtonClick()
     {
+        SceneMgr.Instance.LoadScene("GameScene");
+    }
+
+   public void OnMenuButtonClick()
+    {
 
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void OnOptionButtonClick()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

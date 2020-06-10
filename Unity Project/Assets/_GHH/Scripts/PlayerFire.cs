@@ -13,18 +13,61 @@ public class PlayerFire : MonoBehaviour
     public float rayTime = 0.3f;
     float timer = 0.0f;
 
-    
+    AudioSource audio;
+
+    int poolSize = 20;
+    int fireIndex = 0;
+    //1. 배열
+    //GameObject[] bulletPool;
+    //2. 리스트
+    //public List<GameObject> bulletPool;
+    //3. 큐
+    public Queue<GameObject> bulletPool;
 
     // Start is called before the first frame update
     void Start()
     {
         lr = GetComponent<LineRenderer>();
+
+        audio = GetComponent<AudioSource>();
+
+        InitObjectPooling();
+    }
+
+    private void InitObjectPooling()
+    {
+        //1. 배열
+        //bulletPool = new GameObject[poolSize];
+        //for(int i = 0; i < poolSize; i++)
+        //{
+        //    GameObject bullet = Instantiate(bulletFactory);
+        //    bullet.SetActive(false);
+        //    bulletPool[i] = bullet;
+        //}
+
+        //2. 리스트
+        //bulletPool = new List<GameObject>();
+        //for(int i = 0;i < poolSize; i++)
+        //{
+        //    GameObject bullet = Instantiate(bulletFactory);
+        //    bullet.SetActive(false);
+        //    bulletPool.Add(bullet);
+        //}
+
+        //3. 큐
+        bulletPool = new Queue<GameObject>();
+        for(int i = 0; i < poolSize; i++)
+        {
+            GameObject bullet = Instantiate(bulletFactory);
+            bullet.SetActive(false);
+            bulletPool.Enqueue(bullet);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Fire();
+        Fire();
         //FireRay();
 
         if (lr.enabled) ShowRay();
@@ -40,23 +83,70 @@ public class PlayerFire : MonoBehaviour
         }
     }
 
-    private void Fire()
+    public void Fire()
     {
        if(Input.GetButtonDown("Fire1"))
         {
-            GameObject bullet = Instantiate(bulletFactory);
+            //1. 배열 오브젝트풀링으로 총알발사
+            //bulletPool[fireIndex].SetActive(true);
+            //bulletPool[fireIndex].transform.position = firePoint.transform.position;
+            //bulletPool[fireIndex].transform.up = firePoint.transform.up;
+            //fireIndex++;
+            //if (fireIndex >= poolSize) fireIndex = 0;
+
+            //2. 리스트 오브젝트풀링으로 총알발사         
+            //bulletPool[fireIndex].SetActive(true);
+            //bulletPool[fireIndex].transform.position = firePoint.transform.position;
+            //bulletPool[fireIndex].transform.up = firePoint.transform.up;
+            //fireIndex++;
+            //if (fireIndex >= poolSize) fireIndex = 0;
+
+
+            //3. 리스트 오브젝트풀링으로 총알발사 (진짜 오브젝트 풀링)
+            //if(bulletPool.Count > 0)
+            //{
+            //    GameObject bullet = bulletPool[0];
+            //    bullet.SetActive(true);
+            //    bullet.transform.position = firePoint.transform.position;
+            //    bullet.transform.up = firePoint.transform.up;
+            //    //오브젝트 풀에서 빼준다
+            //    bulletPool.Remove(bullet);
+            //}
+            //else//오브젝트 풀이 비어서 총알이 하나도 없으니 풀크기를 늘려준다
+            //{
+            //    GameObject bullet = Instantiate(bulletFactory);
+            //    bullet.SetActive(false);
+            //    //오브젝트 풀에 추가한다
+            //    bulletPool.Add(bullet);
+            //}
+
+            //4. 큐 오브젝트풀링 사용하기
+            if (bulletPool.Count > 0)
+            {
+                GameObject bullet = bulletPool.Dequeue();
+                bullet.SetActive(true);
+                bullet.transform.position = firePoint.transform.position;
+                bullet.transform.up = firePoint.transform.up;
+            }
+            else
+            {
+                GameObject bullet = Instantiate(bulletFactory);
+                bullet.SetActive(false);
+                bulletPool.Enqueue(bullet);
+            }
+            //GameObject bullet = Instantiate(bulletFactory);
 
             //bullet.transform.position = transform.position;
-            bullet.transform.position = firePoint.transform.position;
+            //bullet.transform.position = firePoint.transform.position;
         }
     }
 
-    private void FireRay()
+    public void FireRay()
     {
         
         if (Input.GetButtonDown("Fire1"))
         {
-           
+            audio.Play();
 
             lr.enabled = true;
             
@@ -92,5 +182,7 @@ public class PlayerFire : MonoBehaviour
         GameObject bullet = Instantiate(bulletFactory);
         //bullet.transform.position = transform.position;
         bullet.transform.position = firePoint.transform.position;
+
+        SceneMgr.Instance.LoadScene("StartScene");
     }
 }

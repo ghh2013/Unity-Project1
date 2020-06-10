@@ -8,6 +8,8 @@ public class PlayerMove : MonoBehaviour
     public float speed = 5.0f;
     public Vector2 margin;
 
+    public VariableJoystick joystick;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,13 @@ public class PlayerMove : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
+
+        if(h==0&&v==0)
+        {
+            h = joystick.Horizontal;
+            v = joystick.Vertical;
+        }
+
         //transform.Translate(h * speed * Time.deltaTime, v * speed * Time.deltaTime, 0);
         //Vector3 dir = Vector3.right * h + Vector3.up * v;
         Vector3 dir = new Vector3(h, v, 0);

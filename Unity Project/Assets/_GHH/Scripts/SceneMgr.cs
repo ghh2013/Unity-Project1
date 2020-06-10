@@ -22,15 +22,8 @@ public class SceneMgr : MonoBehaviour
         SceneManager.LoadScene( value);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public string GetScenName()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return SceneManager.GetActiveScene().name;
     }
 }
