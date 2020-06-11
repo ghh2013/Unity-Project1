@@ -8,7 +8,20 @@ public class DestroyZone : MonoBehaviour
     {
         //Destroy(other.gameObject);
 
-        if(other.gameObject.name.Contains("Bullet"))
+        //if (other.gameObject.name.Contains("Bullet"))
+        //{
+        //    other.gameObject.SetActive(false);
+        //}
+
+        //if (other.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        //{
+        //    other.gameObject.SetActive(false);
+
+        //    PlayerFire pf = GameObject.Find("Player").GetComponent<PlayerFire>();
+        //    pf.bulletPool.Add(other.gameObject);
+        //}
+
+        if (other.gameObject.name.Contains("Bullet"))
         {
             other.gameObject.SetActive(false);
 

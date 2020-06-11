@@ -36,13 +36,21 @@ public class ScoreManager : MonoBehaviour
         {
             highScore = score;
             PlayerPrefs.SetInt("HighScore", highScore);
-            highScoreTxt.text = "HighScore" + highScore;
+            highScoreTxt.text = "HighScore:" + highScore;
         }
     }
 
     public void AddScore()
     {
         score++;
+        scoreTxt.text = "Score:" + score;
+
+        textTxt.text = "test:" + score;
+    }
+
+    public void BossScore()
+    {
+        score += 100;
         scoreTxt.text = "Score:" + score;
 
         textTxt.text = "test:" + score;
