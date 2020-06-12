@@ -165,7 +165,7 @@ public class PlayerFire : MonoBehaviour
                     Destroy(hitInfo.collider.gameObject);
                 }
 
-                //if (hitInfo.collider .name .Contains  ("Enemy"))
+                //if (hitInfo.collider.name.Contains("Enemy"))
                 //{
                 //    Destroy(hitInfo.collider.gameObject);
                 //}
@@ -182,7 +182,5 @@ public class PlayerFire : MonoBehaviour
         GameObject bullet = Instantiate(bulletFactory);
         //bullet.transform.position = transform.position;
         bullet.transform.position = firePoint.transform.position;
-
-        SceneMgr.Instance.LoadScene("StartScene");
     }
 }

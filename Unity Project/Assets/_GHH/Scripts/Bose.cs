@@ -15,7 +15,10 @@ public class Bose : MonoBehaviour
     float curTime1 = 0.0f;
     public int bulletMax = 10;
 
-    
+    public float bossEnergy = 50.0f;
+
+    public GameObject fxFactory;
+
     // Update is called once per frame
     void Update()
     {        
@@ -57,5 +60,21 @@ public class Bose : MonoBehaviour
                 curTime1 = 0.0f;
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (bossEnergy > 0)
+        {
+            if(collision.gameObject.layer == LayerMask.NameToLayer("EBullet"))
+            {
+                bossEnergy -= 1;
+            }
+            if(bossEnergy<=0)
+            {
+                Destroy(this.gameObject, 0.0f);
+            }
+        }
+            
     }
 }

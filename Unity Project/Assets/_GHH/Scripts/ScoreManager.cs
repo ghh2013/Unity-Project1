@@ -50,7 +50,7 @@ public class ScoreManager : MonoBehaviour
 
     public void BossScore()
     {
-        score++;       
+        score += 2;       
         scoreTxt.text = "Score:" + score;
 
         textTxt.text = "test:" + score;

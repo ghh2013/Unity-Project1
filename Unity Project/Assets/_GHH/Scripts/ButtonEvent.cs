@@ -11,7 +11,7 @@ public class ButtonEvent : MonoBehaviour
 
    public void OnMenuButtonClick()
     {
-
+        SceneMgr.Instance.LoadScene("StartScene");
     }
 
     public void OnOptionButtonClick()

@@ -19,10 +19,10 @@ public class SceneMgr : MonoBehaviour
 
     public void LoadScene(string value)
     {
-        SceneManager.LoadScene( value);
+        SceneManager.LoadScene(value);
     }
 
-    public string GetScenName()
+    public string GetSceneName()
     {
         return SceneManager.GetActiveScene().name;
     }
